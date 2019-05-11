@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DrugInfoSearch.Models.Drugs>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("新規作成", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DrugCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Company)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Classifications.ClassificationCode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DrugCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Classifications.ClassificationCode)
+        </td>
+        <td>
+            @Html.ActionLink("編集", "Edit", new { id=item.DrugId }) |
+            @Html.ActionLink("詳細", "Details", new { id=item.DrugId }) |
+            @Html.ActionLink("削除", "Delete", new { id=item.DrugId })
+        </td>
+    </tr>
+}
+
+</table>
